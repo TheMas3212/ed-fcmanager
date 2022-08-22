@@ -2,16 +2,26 @@ import { AppBar, Toolbar, IconButton, Typography, useTheme, SwipeableDrawer, Box
 import MenuIcon from '@mui/icons-material/Menu';
 // import { ColorModeContext } from './theme';
 import React from 'react';
-import Brightness4Icon from '@mui/icons-material/Brightness4';
-import Brightness7Icon from '@mui/icons-material/Brightness7';
-import GameClock from './components/GameClock';
+// import Brightness4Icon from '@mui/icons-material/Brightness4';
+// import Brightness7Icon from '@mui/icons-material/Brightness7';
+import GameClock from './GameClock';
 import HomeIcon from '@mui/icons-material/Home';
-import RocketIcon from '@mui/icons-material/Rocket';
-import NavListItem from './components/NavListItem';
+import SettingsIcon from '@mui/icons-material/Settings';
+import NavListItem from './NavListItem';
+// import { useSettings } from './Settings';
 
 function MenuBar() {
   // const theme = useTheme();
   // const colorMode = React.useContext(ColorModeContext);
+  // const [Settings, setSetting] = useSettings();
+
+  // function toggleColorMode() {
+  //   console.log('aaaa');
+  //   setSetting({
+  //     darkMode: Settings.darkMode === 'light' ? 'dark' : 'light'
+  //   });
+  // }
+
   const [navOpen, setNavOpen] = React.useState(false);
   return (
     <>
@@ -31,7 +41,7 @@ function MenuBar() {
             News
           </Typography>
           <GameClock full/>
-          {/* <IconButton sx={{ ml: 1 }} onClick={colorMode.toggleColorMode} color="primary">
+          {/* <IconButton sx={{ ml: 1 }} onClick={toggleColorMode} color="primary">
             {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
           </IconButton> */}
         </Toolbar>
@@ -41,7 +51,7 @@ function MenuBar() {
         <Toolbar />
         <List sx={{ overflow: 'auto' }}>
           <NavListItem to='/' primary='Home' icon={<HomeIcon />}/>
-          <NavListItem to='/example' primary='Example' icon={<RocketIcon />}/>
+          <NavListItem to='/settings' primary='Settings' icon={<SettingsIcon />}/>
         </List>
       </SwipeableDrawer>
     </>

@@ -9,7 +9,8 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import '@fontsource/michroma/400.css';
 
-import Theme from './theme';
+import Theme from './contexts/Theme';
+import Settings from './contexts/Settings';
 import Router from './Router';
 
 const root = ReactDOM.createRoot(
@@ -17,8 +18,10 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <Theme>
-      <Router/>
-    </Theme>
+    <Settings>
+      <Theme>
+        <Router/>
+      </Theme>
+    </Settings>
   </React.StrictMode>
 );

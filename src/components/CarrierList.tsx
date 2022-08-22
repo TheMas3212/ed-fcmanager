@@ -1,5 +1,5 @@
 import { Typography } from "@mui/material";
-import { useCarrierStore } from "../CarrierStore";
+import { useCarrierStore } from "../contexts/CarrierStore";
 import CarrierInfoBrief from "./CarrierInfoBrief";
 
 function CarrierList(props: { brief: boolean }) {

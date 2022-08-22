@@ -1,14 +1,14 @@
-import App from './App';
+import App from './pages/App';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-// import Example from './pages/Example';
 import HomePage from './pages/Home';
+import SettingsPage from './pages/Settings';
 
 function Router() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<App />}>
-          {/* <Route path='example' element={<Example />}/> */}
+          <Route path='settings' element={<SettingsPage />}/>
           <Route index element={<HomePage/>}/>
         </Route>
       </Routes>

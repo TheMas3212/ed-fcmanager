@@ -1,5 +1,5 @@
 import { Button, Card, CardActions, CardContent, Typography, useTheme } from "@mui/material";
-import { useCarrierStore } from "../CarrierStore";
+import { useCarrierStore } from "../contexts/CarrierStore";
 
 function CarrierInfoBrief(props: { carrierID: string }) {
   const [carriers, dispatchCarriers] = useCarrierStore();

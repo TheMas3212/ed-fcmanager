@@ -1,8 +1,8 @@
 import './App.css';
 import { Box } from '@mui/material';
-import MenuBar from './MenuBar';
+import MenuBar from '../components/MenuBar';
 import { Outlet } from 'react-router-dom';
-import { CarrierStoreProvider } from './CarrierStore';
+import { CarrierStoreProvider } from '../contexts/CarrierStore';
 
 function App() {
   const carriers = {
@@ -24,7 +24,7 @@ function App() {
   };
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <CarrierStoreProvider initialState={carriers}>
+      <CarrierStoreProvider>
         <MenuBar/>
         <Outlet/>
       </CarrierStoreProvider>

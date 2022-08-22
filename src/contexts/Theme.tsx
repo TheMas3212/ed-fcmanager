@@ -1,25 +1,28 @@
 import { GlobalStyles, PaletteMode } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import React from 'react';
+import { useSettings } from './Settings';
 
 // export const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
 
 function Theme(props: { children: React.ReactNode }) {
+  // const [Settings, setSetting] = useSettings();
   // const [mode, setMode] = React.useState<PaletteMode>('light');
   // const colorMode = React.useMemo(
   //   () => ({
   //     // The dark mode switch would invoke this method
   //     toggleColorMode: () => {
-  //       setMode((prevMode: PaletteMode) =>
-  //         prevMode === 'light' ? 'dark' : 'light',
-  //       );
+  //       setSetting({
+  //         setting: 'darkMode',
+  //         value: Settings.darkMode === 'light' ? 'dark' : 'light'
+  //       });
   //     },
   //   }),
   //   [],
   // );
 
   // Update the theme only if the mode changes
-  // const theme = React.useMemo(() => createTheme(getDesignTokens(mode)), [mode]);
+  // const theme = React.useMemo(() => createTheme(getDesignTokens(Settings.darkMode)), [Settings]);
   const theme = createTheme(getDesignTokens('dark'));
   return (
     <>
