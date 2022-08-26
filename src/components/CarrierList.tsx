@@ -1,11 +1,11 @@
 import { Typography } from "@mui/material";
 import { useCarrierStore } from "../contexts/CarrierStore";
-import CarrierInfoBrief from "./CarrierInfoBrief";
+import CarrierInfo from "./CarrierInfo";
 
-function CarrierList(props: { brief: boolean }) {
+function CarrierList() {
   const [carriers, dispatchCarriers] = useCarrierStore();
   const cards = Object.keys(carriers).map((id) => {
-    return (<CarrierInfoBrief carrierID={id} key={id}/>);
+    return (<CarrierInfo carrierID={id} key={id}/>);
   });
 
   return (

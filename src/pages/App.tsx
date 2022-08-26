@@ -26,7 +26,9 @@ function App() {
     <Box sx={{ flexGrow: 1 }}>
       <CarrierStoreProvider>
         <MenuBar/>
-        <Outlet/>
+        <Box marginX="15px">
+          <Outlet/>
+        </Box>
       </CarrierStoreProvider>
     </Box>
   );

@@ -1,28 +1,21 @@
 import { AppBar, Toolbar, IconButton, Typography, useTheme, SwipeableDrawer, Box, List } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-// import { ColorModeContext } from './theme';
 import React from 'react';
-// import Brightness4Icon from '@mui/icons-material/Brightness4';
-// import Brightness7Icon from '@mui/icons-material/Brightness7';
 import GameClock from './GameClock';
 import HomeIcon from '@mui/icons-material/Home';
 import SettingsIcon from '@mui/icons-material/Settings';
 import NavListItem from './NavListItem';
-// import { useSettings } from './Settings';
+import TimerIcon from '@mui/icons-material/Timer';
+import { useLocation } from 'react-router-dom';
 
 function MenuBar() {
-  // const theme = useTheme();
-  // const colorMode = React.useContext(ColorModeContext);
-  // const [Settings, setSetting] = useSettings();
-
-  // function toggleColorMode() {
-  //   console.log('aaaa');
-  //   setSetting({
-  //     darkMode: Settings.darkMode === 'light' ? 'dark' : 'light'
-  //   });
-  // }
-
   const [navOpen, setNavOpen] = React.useState(false);
+  const {pathname} = useLocation();
+
+  React.useEffect(() => {
+    setNavOpen(false); // Close the navigation panel
+  }, [ pathname ]);
+
   return (
     <>
       <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
@@ -41,9 +34,6 @@ function MenuBar() {
             News
           </Typography>
           <GameClock full/>
-          {/* <IconButton sx={{ ml: 1 }} onClick={toggleColorMode} color="primary">
-            {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
-          </IconButton> */}
         </Toolbar>
       </AppBar>
       <Toolbar />
@@ -51,6 +41,7 @@ function MenuBar() {
         <Toolbar />
         <List sx={{ overflow: 'auto' }}>
           <NavListItem to='/' primary='Home' icon={<HomeIcon />}/>
+          <NavListItem to='/jumpTimer' primary='Jump Timer' icon={<TimerIcon />}/>
           <NavListItem to='/settings' primary='Settings' icon={<SettingsIcon />}/>
         </List>
       </SwipeableDrawer>

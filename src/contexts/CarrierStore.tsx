@@ -5,6 +5,25 @@ import { useFleetLink } from './FleetLink';
 
 const localStorageKey = 'ed-fcmanager/carriers';
 
+localStorage.setItem(localStorageKey, JSON.stringify({
+  'ABC-123': {
+    id: 'ABC-123',
+    name: 'TestCarrier 1',
+    location: 'Sol',
+    jumpTarget: '',
+    jumpTime: -1,
+    lastUpdate: 0
+  },
+  'DEF-456': {
+    id: 'DEF-456',
+    name: 'TestCarrier 2',
+    location: 'Panoi',
+    jumpTarget: 'Sol',
+    jumpTime: Math.floor(Date.now() / 1000) + 5*5000,
+    lastUpdate: 0
+  }
+}));
+
 export enum CarrierStoreActionTypes {
   AddCarrier = 'CarrierStoreActions/AddCarrier',
   DeleteCarrier = 'CarrierStoreActions/DeleteCarrier',
@@ -39,6 +58,8 @@ export type Carrier = {
   id: string;
   name: string;
   location: string;
+  jumpTarget: string;
+  jumpTime: number;
   lastUpdate: number;
 }
 
@@ -59,6 +80,18 @@ function fleetLinkActive(fleetLink: Socket | null): fleetLink is Socket {
 }
 
 export const useCarrierStore = () => React.useContext(CarrierStore);
+
+export function useCarrier(id: string): [Carrier, (newState: Carrier) => void] {
+  const [store, dispatch] = useCarrierStore();
+  function update(newState: Carrier) {
+    dispatch({
+      type: CarrierStoreActionTypes.UpdateCarrier,
+      carrier: newState,
+      remote: false
+    });
+  }
+  return [store[id], update];
+}
 
 export const CarrierStoreProvider = (props: { children: React.ReactNode }) => {
   const [store, dispatch] = useLocalStorageReducer(localStorageKey, reducer, {});
