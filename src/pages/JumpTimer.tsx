@@ -75,7 +75,7 @@ function JumpTimer() {
           }}
         >
           <option value=''>None</option>
-          {Object.keys(carriers).map((id) => <option value={id}>{id}</option> )}
+          {Object.keys(carriers).map((id, index) => <option key={index} value={id}>{id}</option> )}
         </NativeSelect>
       </FormControl>
       <CarrierInfo carrierID={carrierID}/>
